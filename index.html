@@ -11,68 +11,77 @@
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;900&display=swap" rel="stylesheet">
 <style>
   :root{
-    --lapis:#13213f; --lapis-deep:#0c1630; --night:#1b2b52;
-    --gold:#d9a441; --ruby:#a12c3a; --marian:#3a6fb5; --stone:#eef0f3;
-    --ink-soft:#c9d2e3; --came:#0a1124;
+    --stone:#ece4d6; --stone-hi:#f6f1e8; --stone-lo:#d6cab6; --ink:#2b2a33; --ink-soft:#5d5866;
+    --cobalt:#2e5aac; --turq:#2ba3a0; --olive:#7da453; --saffron:#f2b233; --clay:#d2553a; --rose:#c2417a;
     --serif:"Noto Serif TC","Songti TC","PMingLiU",serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{background:var(--lapis-deep)}
-  body{font-family:var(--serif);color:var(--stone);background:var(--lapis-deep);line-height:1.75;-webkit-font-smoothing:antialiased}
+  html,body{background:var(--stone)}
+  body{font-family:var(--serif);color:var(--ink);line-height:1.75;-webkit-font-smoothing:antialiased}
   a{color:inherit}
-  :focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+  :focus-visible{outline:3px solid var(--cobalt);outline-offset:4px}
 
-  /* hero: the rose window */
-  .hero{position:relative;min-height:min(100svh,920px);display:grid;place-items:center;overflow:hidden;
-    background:radial-gradient(120% 80% at 50% 30%,var(--night) 0%,var(--lapis) 45%,var(--lapis-deep) 100%)}
-  #rose{position:absolute;inset:0}
-  #rose canvas{display:block}
-  .hero-text{position:relative;z-index:1;text-align:center;align-self:end;padding:0 20px clamp(36px,7vh,72px)}
-  .hero h1{font-weight:900;font-size:clamp(84px,17vw,190px);line-height:1;letter-spacing:.02em;color:var(--stone);
-    text-shadow:0 0 40px rgba(217,164,65,.35),0 2px 0 rgba(0,0,0,.4)}
-  .hero .school{margin-top:18px;font-size:clamp(15px,2.1vw,19px);font-weight:600;color:var(--gold);letter-spacing:.12em}
-  .hero .lead{margin:10px auto 0;max-width:30em;text-wrap:balance;font-size:clamp(15px,1.9vw,18px);color:var(--ink-soft)}
+  /* hero: a forest of branching columns under coloured light, after the Sagrada Família nave */
+  .hero{position:relative;height:min(100svh,940px);min-height:560px;overflow:hidden;background:var(--stone-hi)}
+  #nave{position:absolute;inset:0;cursor:pointer;touch-action:pan-y}
+  #nave canvas{display:block}
+  .hero-text{position:absolute;pointer-events:none;left:0;right:0;bottom:clamp(28px,6vh,64px);text-align:center;padding:0 20px}
+  .hero h1{font-weight:900;font-size:clamp(88px,16vw,180px);line-height:1;color:var(--ink);
+    text-shadow:0 0 30px var(--stone-hi),0 0 60px var(--stone-hi)}
+  .hero .school{margin-top:14px;font-size:clamp(15px,2vw,19px);font-weight:600;letter-spacing:.12em;color:var(--cobalt);
+    text-shadow:0 0 18px var(--stone-hi)}
+  .hero .lead{margin:8px auto 0;max-width:30em;font-size:clamp(15px,1.9vw,18px);color:var(--ink-soft);text-wrap:balance;
+    text-shadow:0 0 14px var(--stone-hi),0 0 24px var(--stone-hi)}
 
-  /* the three lancet windows */
-  .books{max-width:1120px;margin:0 auto;padding:clamp(56px,9vw,104px) 20px clamp(48px,7vw,80px)}
-  .books > p{text-align:center;text-wrap:balance;color:var(--ink-soft);font-size:16px;margin-bottom:clamp(32px,5vw,52px)}
+  .hero .verse{margin:16px auto 0;max-width:34em;font-size:clamp(14px,1.7vw,16px);color:var(--ink);text-wrap:balance;
+    text-shadow:0 0 14px var(--stone-hi),0 0 26px var(--stone-hi);animation:verse 1.6s 5.2s both}
+  .hero .verse span{display:inline-block;margin-left:.6em;color:var(--cobalt);font-weight:600}
+  @keyframes verse{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion: reduce){.hero .verse{animation:none}}
+
+  .hero .hour{margin-top:10px;font-size:13.5px;color:var(--ink-soft);letter-spacing:.06em;animation:verse 1.6s 5.6s both}
+  @media (prefers-reduced-motion: reduce){.hero .hour{animation:none}}
+
+  /* the three parabolic arches */
+  .books{max-width:1120px;margin:0 auto;padding:clamp(56px,9vw,100px) 20px clamp(56px,8vw,92px)}
+  .books > p{text-align:center;color:var(--ink-soft);font-size:16px;margin-bottom:clamp(30px,5vw,50px);text-wrap:balance}
   .row{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3.4vw,44px);align-items:end}
   .book{display:flex;flex-direction:column;align-items:center;text-align:center;text-decoration:none;color:inherit}
-  .glass{position:relative;width:100%;max-width:300px;aspect-ratio:3/5;border-radius:50% 50% 6px 6px / 30% 30% 6px 6px;overflow:hidden;
-    background:var(--came);border:6px solid var(--came);box-shadow:0 0 0 2px rgba(217,164,65,.55),0 24px 60px -24px rgba(58,111,181,.65)}
-  .book:nth-child(2) .glass{max-width:330px}
-  .glass canvas{display:block;width:100%!important;height:100%!important}
-  .book .part{margin-top:22px;font-size:15px;color:var(--gold);font-weight:600;letter-spacing:.08em}
+  .arch{width:100%;max-width:290px;aspect-ratio:4/5}
+  .book:nth-child(2) .arch{max-width:320px}
+  .arch canvas{display:block;width:100%!important;height:100%!important}
+  .book .part{margin-top:18px;font-size:15px;font-weight:600;letter-spacing:.08em;color:var(--cobalt)}
   .book h2{margin-top:2px;font-size:clamp(23px,2.6vw,29px);font-weight:900;line-height:1.35}
-  .book .about{margin-top:8px;max-width:18em;text-wrap:balance;font-size:15.5px;color:var(--ink-soft);line-height:1.8}
-  .book .go{display:inline-block;margin-top:18px;padding:10px 22px;border:1.5px solid var(--gold);border-radius:999px;
-    font-size:15.5px;font-weight:600;color:var(--gold);transition:background .2s,color .2s}
-  .book:hover .go,.book:focus-visible .go{background:var(--gold);color:var(--lapis-deep)}
+  .book .about{margin-top:8px;max-width:18em;font-size:15.5px;color:var(--ink-soft);line-height:1.8;text-wrap:balance}
+  .book .go{display:inline-block;margin-top:18px;padding:10px 24px;border-radius:999px;background:var(--ink);color:var(--stone-hi);
+    font-size:15.5px;font-weight:600;transition:background .2s}
+  .book:hover .go{background:var(--cobalt)}
   .book:focus-visible{outline:none}
-  .book:focus-visible .glass{outline:3px solid var(--gold);outline-offset:6px}
+  .book:focus-visible .arch{outline:3px solid var(--cobalt);outline-offset:6px;border-radius:50% 50% 8px 8px}
 
-  /* footer with a Macanese azulejo border */
-  footer{background:var(--stone);color:#24324f}
-  .tiles{height:44px;background-color:#f7f8fb;background-size:44px 44px;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'%3E%3Cg fill='none' stroke='%232a4f9a' stroke-width='2'%3E%3Ccircle cx='22' cy='22' r='9'/%3E%3Cpath d='M22 2v9M22 33v9M2 22h9M33 22h9'/%3E%3Cpath d='M0 0l8 8M44 0l-8 8M0 44l8-8M44 44l-8-8'/%3E%3C/g%3E%3Ccircle cx='22' cy='22' r='3' fill='%232a4f9a'/%3E%3C/svg%3E")}
-  .foot{max-width:1120px;margin:0 auto;padding:28px 20px 36px;display:flex;flex-wrap:wrap;gap:8px 32px;justify-content:space-between;font-size:14.5px;line-height:1.8}
+  /* footer: an undulating trencadís bench, as in Park Güell */
+  #bench{height:70px}
+  #bench canvas{display:block}
+  footer{background:var(--ink);color:#e9e3d8}
+  .foot{max-width:1120px;margin:0 auto;padding:26px 20px 34px;display:flex;flex-wrap:wrap;gap:8px 32px;justify-content:space-between;font-size:14.5px;line-height:1.8}
   .foot b{font-weight:900;font-size:16px}
 
   @media (max-width:820px){
-    .row{grid-template-columns:1fr;gap:56px}
-    .glass,.book:nth-child(2) .glass{max-width:min(200px,52vw)}
-    .row{gap:48px}
-    .book .part{margin-top:16px}
+    .row{grid-template-columns:1fr;gap:48px}
+    .arch,.book:nth-child(2) .arch{max-width:min(220px,58vw)}
+    .book .part{margin-top:14px}
   }
 </style>
 </head>
 <body>
 <header class="hero">
-  <div id="rose" aria-hidden="true"></div>
+  <div id="nave" aria-hidden="true"></div>
   <div class="hero-text">
     <h1>信</h1>
     <p class="school">聖若瑟教區中學第五校　教職慕道班</p>
     <p class="lead">三本會動的學習書。跟著旁白、字幕與動畫，一頁一頁認識信仰。</p>
+    <p class="verse">「天國好像一粒芥子……當它長起來，卻比各種蔬菜都大，竟成了樹，甚至天上的飛鳥飛來，在它的枝上棲息。」<span>瑪 13:31–32</span></p>
+    <p class="hour" id="hour"></p>
   </div>
 </header>
 
@@ -80,21 +89,21 @@
   <p>依次閱讀，每冊約五分鐘；電腦和手機都可以開。</p>
   <div class="row">
     <a class="book" href="book1/index.html">
-      <div class="glass" data-seed="1" data-palette="gold"></div>
+      <div class="arch" data-seed="11" data-palette="warm"></div>
       <span class="part">第一部書</span>
       <h2>耶穌的一生</h2>
       <span class="about">從受洗、揀選宗徒到十字架，13 頁動畫故事。</span>
       <span class="go">開始閱讀第一部</span>
     </a>
     <a class="book" href="book2/index.html">
-      <div class="glass" data-seed="2" data-palette="blue"></div>
+      <div class="arch" data-seed="22" data-palette="cool"></div>
       <span class="part">第二部書</span>
       <h2>信德與愛的誡命</h2>
       <span class="about">從亞巴郎、梅瑟到十誡，14 頁動畫故事。</span>
       <span class="go">開始閱讀第二部</span>
     </a>
     <a class="book" href="book3/index.html">
-      <div class="glass" data-seed="3" data-palette="violet"></div>
+      <div class="arch" data-seed="33" data-palette="violet"></div>
       <span class="part">第三部書</span>
       <h2>寬恕與修和聖事</h2>
       <span class="about">從浪子回頭到告解聖事，14 頁動畫故事。</span>
@@ -103,8 +112,8 @@
   </div>
 </main>
 
+<div id="bench" aria-hidden="true"></div>
 <footer>
-  <div class="tiles" aria-hidden="true"></div>
   <div class="foot">
     <div><b>聖若瑟教區中學第五校</b><br>澳門天主教教區　教職慕道班教材</div>
     <div>內容參考：教材《信》第一至三部書、《天主教教理》梵蒂岡中文版、思高聖經</div>
@@ -115,131 +124,352 @@
 <script>
 (() => {
 const STILL = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const JEWELS = {
-  gold:   ['#d9a441', '#a12c3a', '#e8c26a', '#7a1f2b', '#3a6fb5', '#f0d9a0'],
-  blue:   ['#3a6fb5', '#1f4f8f', '#5f9bd6', '#2f7a6a', '#d9a441', '#a9c6ea'],
-  violet: ['#6b3f8f', '#8e5bb0', '#a12c3a', '#3a6fb5', '#d9a441', '#c7a6dc'],
-  rose:   ['#a12c3a', '#3a6fb5', '#d9a441', '#2f7a6a', '#6b3f8f', '#e8c26a', '#1f4f8f']
+const TILES = {
+  warm:   ['#f2b233', '#d2553a', '#c2417a', '#e8c26a', '#2e5aac', '#f6f1e8'],
+  cool:   ['#2e5aac', '#2ba3a0', '#7da453', '#5f9bd6', '#f2b233', '#f6f1e8'],
+  violet: ['#6b3f8f', '#c2417a', '#2e5aac', '#9a72c0', '#f2b233', '#f6f1e8'],
+  bench:  ['#2e5aac', '#2ba3a0', '#7da453', '#f2b233', '#d2553a', '#c2417a', '#f6f1e8', '#f6f1e8']
 };
+const COOL = ['#2e5aac', '#2ba3a0', '#7da453', '#5f9bd6'], WARM = ['#f2b233', '#d2553a', '#c2417a', '#e8c26a'];
+const STONE = '#f3eee6', STONE_EDGE = '#cfc3ae', GROUT = '#e2d8c6';
+const ease = x => 1 - Math.pow(1 - Math.min(1, Math.max(0, x)), 3);
 
-/* Rose window: twelve petals for the twelve apostles around a gold cross,
-   leaded like the windows of Macau's churches; light drifts slowly across the glass. */
+/* Trencadís: a jittered grid of tiles, each shrunk toward its centre so grout shows between.
+   Returned as data so a surface can shimmer its tiles later. */
+function makeTiles(p, pal, cell, x0, y0, w, h){
+  const cols = Math.ceil(w / cell) + 1, rows = Math.ceil(h / cell) + 1, pts = [], tiles = [];
+  for (let r = 0; r <= rows; r++) { pts[r] = [];
+    for (let c = 0; c <= cols; c++) pts[r][c] = [x0 + c * cell + p.random(-.32, .32) * cell, y0 + r * cell + p.random(-.32, .32) * cell]; }
+  const pick = () => p.color(pal[Math.floor(p.random(pal.length))]);
+  for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+    const q = [pts[r][c], pts[r][c + 1], pts[r + 1][c + 1], pts[r + 1][c]];
+    const cx = (q[0][0] + q[1][0] + q[2][0] + q[3][0]) / 4, cy = (q[0][1] + q[1][1] + q[2][1] + q[3][1]) / 4;
+    const v = q.map(([x, y]) => [cx + (x - cx) * 0.84, cy + (y - cy) * 0.84]);
+    const k = 0.88 + p.random(0.2);
+    if (p.random() < 0.35) {   // a broken tile: two shards
+      const m = (a, b) => [a[0] + (b[0] - a[0]) * 0.06, a[1] + (b[1] - a[1]) * 0.06];
+      tiles.push({ cx, cy, k, col: pick(), poly: [v[0], v[1], v[2]] });
+      tiles.push({ cx, cy, k, col: pick(), poly: [m(v[0], v[2]), v[2], v[3]] });
+    } else tiles.push({ cx, cy, k, col: pick(), poly: v });
+  }
+  tiles.cell = cell; return tiles;
+}
+function drawTiles(p, tiles, glow = () => 0){
+  p.noStroke();
+  for (const t of tiles) {
+    const g = glow(t), k = t.k * (1 + g * 0.45), add = g * 70;
+    p.fill(Math.min(255, p.red(t.col) * k + add), Math.min(255, p.green(t.col) * k + add), Math.min(255, p.blue(t.col) * k + add));
+    p.beginShape(); for (const [x, y] of t.poly) p.vertex(x, y); p.endShape(p.CLOSE);
+  }
+  for (const t of tiles) { p.fill(255, 255, 255, 38 + glow(t) * 140); p.circle(t.cx - tiles.cell * 0.12, t.cy - tiles.cell * 0.12, tiles.cell * 0.18); }
+}
+
+/* Gaudí's four-armed cross, seen front on. */
+function gaudiCross(p, x, y, s, col){
+  p.noStroke(); p.fill(col); p.rectMode(p.CENTER);
+  p.rect(x, y, s * 0.34, s * 1.5, s * 0.17); p.rect(x, y - s * 0.12, s * 1.15, s * 0.34, s * 0.17);
+  p.fill(255, 255, 255, 90); p.circle(x - s * 0.06, y - s * 0.5, s * 0.12);
+}
+
+/* The light inside changes with the hour, as it does in the Sagrada Família; each visit gets one at random. */
+const MOODS = {
+  dawn:      { name: '清晨', top: '#eef1f2', bot: '#e3e4dc', sun: [0.1, 0.28], pal: ['#5f9bd6', '#2ba3a0', '#9cc7e8', '#7da453', '#f6e3a8'] },
+  noon:      { name: '正午', top: '#fbf6ea', bot: '#efe5d1', sun: [0.5, 0.02], pal: ['#ffd166', '#f2b233', '#fff1c4', '#2ba3a0', '#e8c26a'] },
+  afternoon: { name: '午後', top: '#f6f0e3', bot: '#e8dcc6', sun: [0.82, 0.1], pal: ['#f2b233', '#7da453', '#2ba3a0', '#e8a91f', '#c9d97a'] },
+  dusk:      { name: '黃昏', top: '#f3e3d6', bot: '#e2cdbd', sun: [0.94, 0.34], pal: ['#d2553a', '#f2b233', '#c2417a', '#e8803a', '#8e5bb0'] }
+};
+const MOOD_PICK = MOODS[(location.search.match(/mood=(\w+)/) || [])[1]] || Object.values(MOODS)[Math.floor(Math.random() * 4)], MOOD = MOOD_PICK;
+document.getElementById('hour').textContent = '此刻的光：' + MOOD.name + '　每次打開都不一樣';
+
+/* Hero: the parable of the mustard seed (Mt 13:31–32), drawn as the Tree of Life that crowns
+   the Nativity façade of the Sagrada Família: a seed falls, sprouts, grows into a great tree of
+   green trencadís, a cross lights up at its crown, and doves come to rest in its branches.
+   The pointer is the sun and the wind; a tap calls another dove. */
 new p5(p => {
-  let host, pieces = [], cx, cy, R;
+  let host, glass, wins = [], bursts = [], W, H, ground, nodes = [], leaves = [], tips = [], doves = [], sparks = [], motes = [], born = 0, crown, treeDone;
+  const sun = { x: 0, y: 0, tx: 0, ty: 0, live: false };
+  const GREENS = ['#7da453', '#4f8a3c', '#a8c66c', '#5f9a48', '#2ba3a0', '#c9d97a'];
+  const T_SEED = 0.9, T_SPROUT = 1.5;
   p.setup = () => {
-    host = document.getElementById('rose');
+    host = document.getElementById('nave');
     p.createCanvas(host.clientWidth, host.clientHeight).parent(host);
     p.pixelDensity(Math.min(2, window.devicePixelRatio || 1));
     build();
-    if (STILL) p.noLoop();
+    const at = e => { const r = host.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
+    host.addEventListener('pointermove', e => { [sun.tx, sun.ty] = at(e); sun.live = true; });
+    host.addEventListener('pointerleave', () => { sun.live = false; });
+    host.addEventListener('pointerdown', e => { const [x, y] = at(e); sun.tx = x; sun.ty = y; sun.live = true; tap(x, y); });
+    if (STILL) { born = -99999; for (let k = 0; k < 7; k++) callDove(null, true); p.noLoop(); }
   };
   p.windowResized = () => { p.resizeCanvas(host.clientWidth, host.clientHeight); build(); p.redraw(); };
+
   function build(){
-    p.randomSeed(7);
-    cx = p.width / 2;
-    R = Math.max(90, Math.min(p.width * 0.42, (p.height - 380) / 2.3, 300));
-    cy = 36 + R * 1.08;
-    pieces = [];
-    const C = JEWELS.rose;
-    const ring = (n, r0, r1, kind, off = 0) => {
-      for (let i = 0; i < n; i++) {
-        const a0 = (i / n) * p.TWO_PI + off, a1 = ((i + 1) / n) * p.TWO_PI + off;
-        pieces.push({ kind, a0, a1, r0, r1, c: C[(i * 3 + n) % C.length], ph: p.random(1000) });
+    W = p.width; H = p.height; born = STILL ? -99999 : p.millis();
+    const ht = document.querySelector('.hero-text');   // the field sits just above the title
+    ground = Math.min(H * 0.72, (ht ? ht.offsetTop : H * 0.62) - 8);
+    sun.x = sun.tx = W / 2; sun.y = sun.ty = H * 0.15;
+    // the stone wall in this hour's light, and the patches of coloured light reflected onto it
+    glass = p.createGraphics(W, H); glass.pixelDensity(1); glass.noStroke();
+    const wallTop = glass.color(MOOD.top), wallBot = glass.color(MOOD.bot);
+    for (let y = 0; y < H; y += 3) { glass.fill(glass.lerpColor(wallTop, wallBot, y / H)); glass.rect(0, y, W, 3); }
+    const sx = W * MOOD.sun[0], sy = H * MOOD.sun[1], diag = Math.hypot(W, H);
+    wins = Array.from({ length: W < 700 ? 11 : 17 }, (_, k) => {
+      // scattered away from the sun, more of them near it
+      const a = Math.atan2(ground * 0.55 - sy, W / 2 - sx) + (Math.random() - 0.5) * 2.2, d = diag * (0.12 + Math.pow(Math.random(), 0.8) * 0.6);
+      const r = Math.min(W, H) * (0.07 + Math.random() * 0.13);
+      return { x: sx + Math.cos(a) * d, y: Math.min(ground + r * 0.3, Math.max(-r * 0.3, sy + Math.sin(a) * d)), r, sq: 0.45 + Math.random() * 0.5,
+        rot: Math.random() * Math.PI, hex: MOOD.pal[k % MOOD.pal.length], ph: Math.random() * 100 };
+    });
+    // the tree, as a hierarchy of branches that grow one after another
+    p.randomSeed(13); nodes = []; leaves = []; tips = [];
+    const height = Math.min(ground - H * 0.08, W * 0.62);
+    const trunkLen = height * 0.36, trunkW = Math.max(9, Math.min(W, H) * 0.026);
+    const grow = (parent, ang, len, w, d, t0) => {
+      const dur = d === 0 ? 0.9 : 0.42, n = { parent, ang, len, w, d, t0, dur, ph: p.random(10) };
+      nodes.push(n);
+      if (d >= 6) { tips.push(n); for (let k = 0; k < 7; k++) leaves.push({ n, dx: p.random(-1, 1), dy: p.random(-1, .6), r: p.random(.6, 1.1),
+        rot: p.random(p.TWO_PI), c: p.color(GREENS[Math.floor(p.random(GREENS.length))]), t0: t0 + dur + p.random(0, .5) }); return; }
+      const k = d < 2 ? 3 : 2;
+      for (let j = 0; j < k; j++) {
+        const spread = (j - (k - 1) / 2) * (d === 0 ? 0.62 : 0.5) + p.random(-.12, .12);
+        grow(n, ang + spread, len * p.random(.66, .76), w * .68, d + 1, t0 + dur * .85);
       }
+      if (d >= 2 && p.random() < .5) for (let k = 0; k < 4; k++) leaves.push({ n, dx: p.random(-.8, .8), dy: p.random(-.8, .4), r: p.random(.5, .85),
+        rot: p.random(p.TWO_PI), c: p.color(GREENS[Math.floor(p.random(GREENS.length))]), t0: t0 + dur + p.random(.2, .6) });
     };
-    ring(12, R * 0.30, R * 0.62, 'petal');
-    ring(12, R * 0.62, R * 0.80, 'arch', p.PI / 12);
-    ring(24, R * 0.80, R * 0.97, 'cell');
+    grow(null, 0, trunkLen, trunkW, 0, T_SPROUT);
+    treeDone = Math.max(...leaves.map(l => l.t0)) + 0.4;
+    // fit the grown tree (and the cross above it) into the space above the field
+    layout(99, 0);
+    const leafPad = Math.max(7, Math.min(W, H) * 0.02) * 2.2, crossRoom = Math.min(W, H) * 0.06 * 2.4;
+    const top = Math.min(...nodes.map(n => n.y2)) - leafPad, spanX = Math.max(...nodes.map(n => Math.abs(n.x2 - W / 2))) + leafPad;
+    const fit = Math.min(1, (ground - H * 0.03 - crossRoom) / (ground - top), (W * 0.47) / spanX);
+    for (const n of nodes) n.len *= fit;
+    layout(99, 0);
+    // the crown, where the cross will stand
+    crown = { x: W / 2, y: Math.min(...tips.map(n => n.y2)) - Math.min(W, H) * 0.06 };
+    doves = []; sparks = [];
+    motes = Array.from({ length: Math.round(W / 12) }, () => ({ x: p.random(W), y: p.random(ground), r: p.random(1.5, 4),
+      c: p.color(p.random() < .5 ? COOL[Math.floor(p.random(4))] : WARM[Math.floor(p.random(4))]), v: p.random(.3, 1), ph: p.random(10) }));
   }
-  function sector(r0, r1, a0, a1){
-    p.beginShape();
-    for (let t = 0; t <= 12; t++) { const a = p.lerp(a0, a1, t / 12); p.vertex(cx + Math.cos(a) * r1, cy + Math.sin(a) * r1); }
-    for (let t = 12; t >= 0; t--) { const a = p.lerp(a0, a1, t / 12); p.vertex(cx + Math.cos(a) * r0, cy + Math.sin(a) * r0); }
-    p.endShape(p.CLOSE);
+  // position every branch for this moment: grown length and a sway in the wind
+  function layout(now, t){
+    const wind = (sun.x - W / 2) / W;
+    for (const n of nodes) {
+      const g = ease((now - n.t0) / n.dur);
+      const sway = n.d === 0 ? 0 : (Math.sin(t * 1.3 + n.ph) * 0.025 + wind * 0.06) * n.d * 0.5;
+      const a = (n.parent ? n.parent.a : 0) + n.ang + sway;
+      const x = n.parent ? n.parent.x2 : W / 2, y = n.parent ? n.parent.y2 : ground;
+      n.a = a; n.g = g; n.x = x; n.y = y;
+      n.x2 = x + Math.sin(a) * n.len * g; n.y2 = y - Math.cos(a) * n.len * g;
+    }
   }
-  function petal(r0, r1, a0, a1){
-    const am = (a0 + a1) / 2, w = (a1 - a0) * 0.46;
-    p.beginShape();
-    p.vertex(cx + Math.cos(am) * r0, cy + Math.sin(am) * r0);
-    p.bezierVertex(cx + Math.cos(am - w) * r0 * 1.25, cy + Math.sin(am - w) * r0 * 1.25,
-                   cx + Math.cos(am - w) * r1, cy + Math.sin(am - w) * r1,
-                   cx + Math.cos(am) * r1, cy + Math.sin(am) * r1);
-    p.bezierVertex(cx + Math.cos(am + w) * r1, cy + Math.sin(am + w) * r1,
-                   cx + Math.cos(am + w) * r0 * 1.25, cy + Math.sin(am + w) * r0 * 1.25,
-                   cx + Math.cos(am) * r0, cy + Math.sin(am) * r0);
-    p.endShape(p.CLOSE);
+  function tap(x, y){
+    bursts.push({ x, y, r: 10, life: 1 });
+    for (let k = 0; k < 18; k++) { const a = p.random(p.TWO_PI), s = p.random(1.5, 5);
+      sparks.push({ x, y, vx: Math.cos(a) * s, vy: Math.sin(a) * s, life: 1 }); }
+    callDove({ x, y });
+  }
+  function callDove(near, settled){
+    const free = tips.filter(n => !doves.some(d => d.perch === n));
+    if (!free.length) return;
+    const perch = near ? free.reduce((b, n) => (Math.hypot(n.x2 - near.x, n.y2 - near.y) < Math.hypot(b.x2 - near.x, b.y2 - near.y) ? n : b))
+                       : free[Math.floor(p.random(free.length))];
+    if (doves.length >= 14) doves.shift();
+    const from = p.random() < .5 ? -60 : W + 60;
+    doves.push({ perch, sx: from, sy: p.random(H * .05, H * .3), t: settled ? 1 : 0, face: from < 0 ? 1 : -1, s: Math.max(9, Math.min(W, H) * 0.017) });
+  }
+  function drawDove(x, y, s, face, flap, flying){
+    p.push(); p.translate(x, y); p.scale(face, 1); p.noStroke();
+    p.fill(255, 255, 255, 235);
+    if (flying) { const w = Math.sin(flap) * s * 1.4; p.triangle(-s * .2, 0, s * .5, 0, s * .1, -s * .3 - w); p.triangle(-s * .2, 0, s * .5, 0, s * .2, s * .1 + w * .4); }
+    p.ellipse(0, 0, s * 1.7, s * .95); p.circle(s * .78, -s * .38, s * .62);
+    p.triangle(-s * .7, 0, -s * 1.35, -s * .3, -s * 1.3, s * .25);
+    if (!flying) { p.fill(236, 232, 224); p.ellipse(-s * .15, -s * .05, s * 1.05, s * .55); }
+    p.fill('#e8a91f'); p.triangle(s * 1.05, -s * .42, s * 1.32, -s * .34, s * 1.05, -s * .3);
+    p.fill(43, 42, 51); p.circle(s * .86, -s * .45, s * .12);
+    p.pop();
+  }
+  /* Light through the glass: each window throws a shaft that splits into its colours as it falls,
+     tinting wall, ground and tree alike; caustics ripple where it lands. The pointer moves the sun. */
+  function drawLight(t){
+    const g = p.drawingContext;
+    g.save(); g.globalCompositeOperation = 'multiply';
+    for (const w of wins) {
+      // each patch breathes and drifts; the pointer nudges the light
+      const dx = (sun.x - W * MOOD.sun[0]) * 0.12, dy = (sun.y - H * MOOD.sun[1]) * 0.08;
+      const x = w.x - dx + (p.noise(w.ph, t * 0.12) - 0.5) * w.r * 0.8, y = w.y - dy + (p.noise(w.ph + 9, t * 0.12) - 0.5) * w.r * 0.6;
+      const r = w.r * (0.85 + 0.3 * p.noise(w.ph + 20, t * 0.2)), c = p.color(w.hex);
+      g.save(); g.translate(x, y); g.rotate(w.rot + Math.sin(t * 0.1 + w.ph) * 0.2); g.scale(1, w.sq);
+      const grd = g.createRadialGradient(0, 0, 0, 0, 0, r);
+      grd.addColorStop(0, `rgba(${p.red(c)},${p.green(c)},${p.blue(c)},0.42)`);
+      grd.addColorStop(0.6, `rgba(${p.red(c)},${p.green(c)},${p.blue(c)},0.2)`);
+      grd.addColorStop(1, `rgba(${p.red(c)},${p.green(c)},${p.blue(c)},0)`);
+      g.fillStyle = grd; g.beginPath(); g.arc(0, 0, r, 0, Math.PI * 2); g.fill(); g.restore();
+    }
+    g.globalCompositeOperation = 'screen';
+    for (const w of wins) {   // a bright core in the larger patches
+      if (w.r < Math.min(W, H) * 0.13) continue;
+      const x = w.x - (sun.x - W * MOOD.sun[0]) * 0.12, y = w.y - (sun.y - H * MOOD.sun[1]) * 0.08, c = p.color(w.hex);
+      const grd = g.createRadialGradient(x, y, 0, x, y, w.r * 0.45);
+      grd.addColorStop(0, `rgba(255,250,235,0.55)`); grd.addColorStop(1, 'rgba(255,255,255,0)');
+      g.fillStyle = grd; g.fillRect(x - w.r, y - w.r, w.r * 2, w.r * 2);
+    }
+    g.restore();
+    p.noStroke();
+    for (let k = 0; k < 10; k++) {   // glints where the light catches
+      const w = wins[k % wins.length], f = (Math.sin(t * 2.4 + k * 7.3) + 1) / 2; if (f < 0.7) continue;
+      const x = w.x + Math.cos(k * 2.1) * w.r * 0.4, y = w.y + Math.sin(k * 1.7) * w.r * 0.3 * w.sq, s = 3 + 7 * (f - 0.7) / 0.3;
+      p.fill(255, 252, 238, 210); p.quad(x, y - s * 2, x + s * .3, y, x, y + s * 2, x - s * .3, y); p.quad(x - s * 2, y, x, y - s * .3, x + s * 2, y, x, y + s * .3);
+    }
+    const SPEC = ['#c2417a', '#d2553a', '#f2b233', '#7da453', '#2ba3a0', '#2e5aac', '#6b3f8f'];
+    for (const b of bursts) {   // a tap breaks the light into its colours
+      b.r += 6; b.life -= 0.025;
+      for (let k = 0; k < 7; k++) { const c = p.color(SPEC[k]); c.setAlpha(110 * b.life); p.noFill(); p.stroke(c); p.strokeWeight(3); p.circle(b.x, b.y, (b.r + k * 5) * 2); }
+    }
+    p.noStroke(); bursts = bursts.filter(b => b.life > 0);
+  }
+  function drawCross(now, t){
+    const g = ease((now - treeDone) / 0.9); if (g <= 0) return;
+    const { x: cx, y: cy } = crown, s = Math.min(W, H) * 0.06;
+    const near = Math.max(0, 1 - p.dist(cx, cy, sun.x, sun.y) / (Math.min(W, H) * 0.35));
+    p.noStroke();
+    for (let k = 0; k < 24; k++) {
+      const a = k * Math.PI / 12 + t * 0.25, r1 = s * 0.9, r2 = s * (k % 2 ? 1.9 : 2.7) * (1 + near * 0.35);
+      const c = p.color('#f2b233'); c.setAlpha((k % 2 ? 70 : 115) * g); p.fill(c);
+      p.triangle(cx + Math.cos(a - 0.05) * r1, cy + Math.sin(a - 0.05) * r1, cx + Math.cos(a) * r2, cy + Math.sin(a) * r2, cx + Math.cos(a + 0.05) * r1, cy + Math.sin(a + 0.05) * r1);
+    }
+    for (let k = 5; k > 0; k--) { p.fill(255, 246, 220, 40 * g); p.circle(cx, cy, s * (0.9 + k * 0.45) * (1 + near * 0.2)); }
+    const pop = 1 + 0.25 * Math.sin(Math.min(1, (now - treeDone) / 0.9) * Math.PI);
+    p.push(); p.translate(cx, cy); p.scale(g * pop);
+    gaudiCross(p, 0, s * 0.12, s, '#e8a91f');
+    p.fill('#f6c453'); for (const [x, y] of [[0, -s * 0.62], [0, s * 0.86], [-s * 0.58, 0], [s * 0.58, 0]]) p.circle(x, y, s * 0.3);
+    p.pop();
   }
   p.draw = () => {
-    p.clear();
-    const t = p.millis() / 1000;
-    const sun = { x: Math.cos(t * 0.08) * 0.8, y: Math.sin(t * 0.06) * 0.6 - 0.3 };
-
-    // light falling from the window
+    const now = (p.millis() - born) / 1000, t = p.millis() / 1000;
+    if (!sun.live) { sun.tx = W * MOOD.sun[0] + Math.sin(t * 0.3) * W * 0.04; sun.ty = H * MOOD.sun[1] + Math.cos(t * 0.25) * H * 0.02; }
+    sun.x += (sun.tx - sun.x) * 0.08; sun.y += (sun.ty - sun.y) * 0.08;
+    p.image(glass, 0, 0);
     p.noStroke();
-    p.drawingContext.globalCompositeOperation = 'lighter';
-    for (let k = 0; k < 3; k++) {
-      const c = p.color(JEWELS.rose[k]); c.setAlpha(14);
-      p.fill(c);
-      const sp = R * (0.55 + k * 0.18);
-      p.quad(cx - R * 0.5, cy, cx + R * 0.5, cy, cx + sp * 1.6 + R * 0.3 * k, p.height, cx - sp * 1.6 + R * 0.3 * k, p.height);
+    // the sun's own glow, high on the wall
+    { const g = p.drawingContext, rad = Math.max(W, H) * 0.7, c = p.color(MOOD.pal[0]);
+      const grd = g.createRadialGradient(sun.x, sun.y, 0, sun.x, sun.y, rad);
+      grd.addColorStop(0, `rgba(255,250,235,0.85)`); grd.addColorStop(0.18, `rgba(${p.red(c)},${p.green(c)},${p.blue(c)},0.22)`); grd.addColorStop(1, 'rgba(255,255,255,0)');
+      g.fillStyle = grd; g.fillRect(0, 0, W, H); }
+    // the field
+    p.fill('#ddd0b4'); p.ellipse(W / 2, ground + 4, Math.min(W * 0.7, 640), 26);
+    p.fill('#c7b48c'); p.ellipse(W / 2, ground + 2, Math.min(W * 0.2, 180), 12);
+    // the seed falls, glowing, and goes into the ground
+    if (now < T_SEED + 0.4) {
+      const f = Math.min(1, now / T_SEED), y = H * 0.08 + (ground - H * 0.08) * f * f, a = now < T_SEED ? 1 : 1 - (now - T_SEED) / 0.4;
+      for (let k = 4; k > 0; k--) { p.fill(242, 178, 51, 30 * a); p.circle(W / 2, y, 10 + k * 9); }
+      p.fill(232, 169, 31, 255 * a); p.ellipse(W / 2, y, 9, 12);
+      if (now > T_SEED && now < T_SEED + 0.4) { p.noFill(); p.stroke(232, 169, 31, 200 * a); p.strokeWeight(2); p.ellipse(W / 2, ground, (now - T_SEED) * 260, (now - T_SEED) * 60); p.noStroke(); }
     }
-    p.drawingContext.globalCompositeOperation = 'source-over';
-
-    // stone surround and leading
-    p.fill('#0a1124'); p.circle(cx, cy, R * 2.12);
-    p.stroke('#0a1124'); p.strokeWeight(Math.max(2, R * 0.016));
-    for (const g of pieces) {
-      const am = (g.a0 + g.a1) / 2;
-      const lit = 0.55 + 0.45 * p.noise(g.ph + t * 0.18 + Math.cos(am) * sun.x + Math.sin(am) * sun.y);
-      const c = p.color(g.c);
-      p.fill(p.red(c) * lit, p.green(c) * lit, p.blue(c) * lit);
-      if (g.kind === 'petal') petal(g.r0, g.r1, g.a0, g.a1);
-      else if (g.kind === 'arch') sector(g.r0, g.r1, g.a0, g.a1);
-      else { sector(g.r0, g.r1, g.a0, g.a1); p.fill(255, 255, 255, 30 * lit); p.circle(cx + Math.cos(am) * (g.r0 + g.r1) / 2, cy + Math.sin(am) * (g.r0 + g.r1) / 2, (g.r1 - g.r0) * 0.45); }
+    // the sprout's first two leaves, before the trunk rises
+    const sp = ease((now - T_SEED - 0.2) / 0.5), fade = 1 - ease((now - T_SPROUT - 0.6) / 0.6);
+    if (sp > 0 && fade > 0) { p.fill(125, 164, 83, 255 * fade); for (const s of [-1, 1]) p.ellipse(W / 2 + s * 9 * sp, ground - 12 * sp, 16 * sp, 8 * sp); }
+    // branches
+    layout(now, t);
+    for (const n of nodes) {
+      if (n.g <= 0) continue;
+      p.stroke('#6e5236'); p.strokeWeight(n.w * 1.12); p.line(n.x, n.y, n.x2, n.y2);
+      p.stroke('#9a7550'); p.strokeWeight(n.w); p.line(n.x, n.y, n.x2, n.y2);
+      p.stroke(255, 240, 210, 70); p.strokeWeight(n.w * .25); p.line(n.x - n.w * .2, n.y, n.x2 - n.w * .2, n.y2);
     }
-    // centre: gold cross on lapis
-    const glow = 0.8 + 0.2 * Math.sin(t * 0.7);
-    p.fill(19, 33, 63); p.circle(cx, cy, R * 0.60);
-    p.noStroke(); p.fill(217 * glow + 30, 164 * glow + 20, 65 * glow);
-    const a = R * 0.22, b = R * 0.055;
-    p.rectMode(p.CENTER); p.rect(cx, cy - a * 0.12, b * 2, a * 2.1, b * 0.4); p.rect(cx, cy - a * 0.45, a * 1.45, b * 2, b * 0.4);
-    p.noFill(); p.stroke('#0a1124'); p.strokeWeight(Math.max(3, R * 0.03)); p.circle(cx, cy, R * 0.60); p.circle(cx, cy, R * 1.94);
-    p.stroke(217, 164, 65, 160); p.strokeWeight(1.5); p.circle(cx, cy, R * 2.12);
+    // leaves of green trencadís, rustling where the pointer passes
+    p.noStroke();
+    const leafS = Math.max(7, Math.min(W, H) * 0.02);
+    for (const l of leaves) {
+      const g = ease((now - l.t0) / 0.35); if (g <= 0) continue;
+      const near = Math.max(0, 1 - Math.hypot(l.n.x2 - sun.x, l.n.y2 - sun.y) / 160);
+      const x = l.n.x2 + l.dx * leafS * 1.6 + Math.sin(t * 6 + l.rot) * near * 4, y = l.n.y2 + l.dy * leafS * 1.6;
+      const s = leafS * l.r * g;
+      p.push(); p.translate(x, y); p.rotate(l.rot + Math.sin(t * 2 + l.rot) * (0.08 + near * 0.4));
+      p.fill(l.c); p.quad(-s, -s * .55, s * .8, -s * .7, s, s * .6, -s * .7, s * .75);
+      p.fill(255, 255, 255, 60 + near * 120); p.circle(-s * .25, -s * .2, s * .35); p.pop();
+    }
+    drawLight(t);
+    drawCross(now, t);
+    // doves arrive once the tree has grown, and keep coming now and then
+    if (!STILL && now > treeDone + 0.6 && doves.length < 7 && p.frameCount % 40 === 0) callDove(null);
+    if (!STILL && now > treeDone + 8 && p.frameCount % 420 === 0 && doves.length) { const d = doves.shift(); callDove(null); }
+    for (const d of doves) {
+      d.t = Math.min(1, d.t + 0.012);
+      const e = ease(d.t), tx = d.perch.x2, ty = d.perch.y2 - d.s * 0.55;
+      const x = d.sx + (tx - d.sx) * e, y = d.sy + (ty - d.sy) * e - Math.sin(e * Math.PI) * H * 0.08;
+      if (d.t >= 1) d.face = tx > W / 2 ? 1 : -1;
+      drawDove(x, y + (d.t >= 1 ? Math.sin(t * 2 + d.s) * 0.8 : 0), d.s, d.face, t * 14, d.t < 1);
+    }
+    // light motes and the sparkle of a tap
+    for (const m of motes) {
+      m.y -= m.v; m.x += Math.sin(t * 1.6 + m.ph) * 0.5; if (m.y < -10) { m.y = ground; m.x = p.random(W); }
+      m.c.setAlpha(140 + 90 * Math.sin(t * 3 + m.ph)); p.fill(m.c); p.circle(m.x, m.y, m.r);
+    }
+    for (const s of sparks) { s.x += s.vx; s.y += s.vy; s.vx *= .95; s.vy *= .95; s.life -= .03; p.fill(242, 178, 51, 255 * s.life); p.circle(s.x, s.y, 5 * s.life + 1); }
+    sparks = sparks.filter(s => s.life > 0);
   };
 });
 
-/* One lancet window per book, seeded so each book keeps its own glass. */
-document.querySelectorAll('.glass').forEach(el => new p5(p => {
-  const pal = JEWELS[el.dataset.palette], seed = +el.dataset.seed;
-  p.setup = () => { p.createCanvas(el.clientWidth, el.clientHeight).parent(el); p.noLoop(); };
-  p.windowResized = () => { p.resizeCanvas(el.clientWidth, el.clientHeight); p.redraw(); };
+/* One parabolic arch per book, filled with its own trencadís. Hovering (or scrolling it into view on a phone)
+   sends a flash of light across the tiles. */
+document.querySelectorAll('.arch').forEach(el => new p5(p => {
+  const pal = TILES[el.dataset.palette], seed = +el.dataset.seed;
+  let tiles = [], wave = -1, hx = 0, hy = 0;
+  const book = el.closest('.book');
+  p.setup = () => {
+    p.createCanvas(el.clientWidth, el.clientHeight).parent(el); p.pixelDensity(Math.min(2, window.devicePixelRatio || 1));
+    build(); p.noLoop();
+    const flash = (x, y) => { if (STILL) return; hx = x; hy = y; wave = 0; p.loop(); };
+    book.addEventListener('pointerenter', e => { const r = el.getBoundingClientRect(); flash(e.clientX - r.left, e.clientY - r.top); });
+    el.addEventListener('pointermove', e => { const r = el.getBoundingClientRect(); hx = e.clientX - r.left; hy = e.clientY - r.top; });
+    new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting && matchMedia('(hover: none)').matches) flash(p.width / 2, p.height); }), { threshold: 0.6 }).observe(el);
+  };
+  p.windowResized = () => { p.resizeCanvas(el.clientWidth, el.clientHeight); build(); p.redraw(); };
+  function build(){ p.randomSeed(seed); tiles = makeTiles(p, pal, Math.max(14, p.width / 11), -10, -10, p.width + 20, p.height + 20); }
+  function archPath(ctx, w, h, inset){
+    const l = inset, r = w - inset, top = inset, bot = h;
+    ctx.beginPath(); ctx.moveTo(l, bot);
+    for (let i = 0; i <= 60; i++) { const u = i / 60; ctx.lineTo(l + (r - l) * u, top + (bot - top) * Math.pow(2 * u - 1, 2) * 0.92); }
+    ctx.lineTo(r, bot); ctx.closePath();
+  }
   p.draw = () => {
-    p.randomSeed(seed * 101); p.noiseSeed(seed);
-    const w = p.width, h = p.height, came = Math.max(2, w * 0.012);
-    p.background('#0a1124');
-    const cols = 3, rows = 7, cw = w / cols, rh = h / rows;
-    p.stroke('#0a1124'); p.strokeWeight(came);
-    for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
-      const x = c * cw, y = r * rh, light = 0.7 + 0.3 * (1 - r / rows);
-      const j = () => p.random(-0.07, 0.07);
-      const pts = [[x + j() * cw, y + j() * rh], [x + cw + j() * cw, y + j() * rh], [x + cw + j() * cw, y + rh + j() * rh], [x + j() * cw, y + rh + j() * rh]];
-      const mid = [x + cw / 2 + j() * cw, y + rh / 2 + j() * rh];
-      for (let k = 0; k < 4; k++) {
-        const col = p.color(pal[Math.floor(p.random(pal.length))]);
-        const n = 0.75 + 0.35 * p.noise(c * 0.7 + k, r * 0.6) ;
-        p.fill(p.red(col) * light * n, p.green(col) * light * n, p.blue(col) * light * n);
-        p.triangle(mid[0], mid[1], pts[k][0], pts[k][1], pts[(k + 1) % 4][0], pts[(k + 1) % 4][1]);
-      }
-    }
-    // a small gold cross in the head of the arch
-    const s = w * 0.11, yy = h * 0.16;
-    p.stroke('#0a1124'); p.strokeWeight(came * 1.2); p.fill('#e8c26a');
-    p.rectMode(p.CENTER); p.rect(w / 2, yy + s * 0.25, s * 0.42, s * 2.1); p.rect(w / 2, yy - s * 0.25, s * 1.4, s * 0.42);
-    // morning light from the upper left
-    p.noStroke();
-    for (let i = 0; i < 14; i++) { p.fill(255, 245, 220, 4); p.circle(w * 0.25, h * 0.06, w * (0.3 + i * 0.08)); }
+    p.clear();
+    const w = p.width, h = p.height, ctx = p.drawingContext, rim = Math.max(8, w * 0.05), front = wave * Math.max(w, h) * 1.4;
+    archPath(ctx, w, h, 0); ctx.fillStyle = STONE_EDGE; ctx.fill();
+    archPath(ctx, w, h, rim * 0.25); ctx.fillStyle = STONE; ctx.fill();
+    ctx.save(); archPath(ctx, w, h, rim); ctx.clip(); p.background(GROUT);
+    drawTiles(p, tiles, t => wave < 0 ? 0 : Math.max(0, 1 - Math.abs(Math.hypot(t.cx - hx, t.cy - hy) - front) / (tiles.cell * 2.2)));
+    ctx.restore();
+    gaudiCross(p, w / 2, h * 0.2, w * 0.13, wave >= 0 ? '#ffd166' : '#f2b233');
+    if (wave >= 0) { wave += 0.035; if (wave > 1.2) { wave = -1; p.noLoop(); p.redraw(); } }
   };
 }));
+
+/* Footer bench: an undulating ribbon of tiles that glints as the pointer runs along it. */
+new p5(p => {
+  let host, tiles = [], mx = -999;
+  p.setup = () => {
+    host = document.getElementById('bench'); p.createCanvas(host.clientWidth, host.clientHeight).parent(host); build();
+    host.addEventListener('pointermove', e => { mx = e.clientX - host.getBoundingClientRect().left; p.redraw(); });
+    host.addEventListener('pointerleave', () => { mx = -999; p.redraw(); });
+    p.noLoop();
+  };
+  p.windowResized = () => { p.resizeCanvas(host.clientWidth, host.clientHeight); build(); p.redraw(); };
+  function build(){ p.randomSeed(3); tiles = makeTiles(p, TILES.bench, 16, -8, 0, p.width + 16, p.height); }
+  p.draw = () => {
+    p.clear();
+    const w = p.width, h = p.height, ctx = p.drawingContext, amp = h * 0.22, per = Math.max(260, w / 5);
+    const wave = x => h * 0.42 + Math.sin(x / per * Math.PI * 2) * amp;
+    ctx.save(); ctx.beginPath(); ctx.moveTo(0, h);
+    for (let x = 0; x <= w; x += 6) ctx.lineTo(x, wave(x)); ctx.lineTo(w, h); ctx.closePath(); ctx.clip();
+    p.background(GROUT); drawTiles(p, tiles, t => Math.max(0, 1 - Math.abs(t.cx - mx) / 70));
+    ctx.restore();
+    p.noFill(); p.stroke(STONE); p.strokeWeight(5); p.beginShape(); for (let x = 0; x <= w; x += 6) p.vertex(x, wave(x)); p.endShape();
+    p.noStroke(); p.fill('#2b2a33'); p.rect(0, h - 3, w, 3);
+  };
+});
 })();
 </script>
 </body>
