@@ -718,6 +718,7 @@ function go(i){
   segFill.forEach((f, k) => f.style.width = k < i ? '100%' : '0%');
   const tok = ++voiceTok; audio = voice;
   voice.pause(); voice.src = narrator === 'hk' ? VOICE_HK.steps[i].audio : s.audio;
+  voice.playbackRate = narrator === 'hk' ? 1.5 : 1;
   Sound.duck(true);
   const pr = voice.play(); if (pr) pr.catch(() => { if (tok === voiceTok) voiceDone = true; });
   $('prevBtn').disabled = i === 0;
@@ -778,6 +779,7 @@ $('factChip').onclick = () => { factHidden = false; showFact(); };
 $('factPlay').onclick = () => {
   if (factAudio) { stopFact(); return; }
   const a = factAudio = new Audio(narrator === 'hk' ? VOICE_HK.facts[idx].audio : VOICE_TW_FACTS[idx].audio);
+  a.playbackRate = narrator === 'hk' ? 1.5 : 1;
   a.addEventListener('ended', () => { if (a === factAudio) stopFact(); });
   Sound.duck(true); a.play().catch(stopFact);
   $('factPlay').classList.add('playing'); $('factPlay').textContent = '⏸ 停止聆聽';
