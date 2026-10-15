@@ -35,6 +35,7 @@
   #muteBtn{width:calc(var(--u)*2.2);height:calc(var(--u)*2.2);border:0;background:none;cursor:pointer;color:var(--ink);display:grid;place-items:center}
   #muteBtn svg{width:calc(var(--u)*1.7);height:calc(var(--u)*1.7)}
   #vol{width:calc(var(--u)*8);accent-color:var(--accent);cursor:pointer}
+  #narratorSelect{max-width:calc(var(--u)*13);border:1px solid var(--line);border-radius:calc(var(--u)*2);background:var(--chip);color:var(--ink);font:inherit;font-size:calc(var(--u)*1.05);padding:calc(var(--u)*.3) calc(var(--u)*.45);cursor:pointer}
   .ready #progress,.ready #stepinfo,.ready #audioCtl{opacity:1}
 
   /* subtitles */
@@ -176,6 +177,7 @@
   #progress .seg{cursor:pointer}
   #stage.port #audioCtl .navBtn{font-size:0;gap:0}
   #stage.port #vol{display:none}  /* phones have volume keys; the mute button stays */
+  #stage.port #narratorSelect{max-width:calc(var(--u)*10);font-size:calc(var(--u)*1.15)}
   #stage.port #audioCtl .navBtn svg{width:calc(var(--u)*2);height:calc(var(--u)*2)}
   #stage.port #pageMenu{width:auto;left:calc(var(--u)*2);right:calc(var(--u)*2);top:calc(var(--u)*9)}
   #stage.port #pageMenu button{font-size:calc(var(--u)*1.7)}
@@ -195,6 +197,7 @@
     <button class="navBtn" id="pagesBtn" title="跳到其他頁" aria-haspopup="true" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h11"/></svg>頁數</button>
     <a class="navBtn" id="homeBtn" href="../index.html" title="回主目錄"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>主目錄</a>
     <span class="sep"></span>
+    <select id="narratorSelect" aria-label="旁白聲線" title="旁白聲線"><option value="hk" selected>廣東話・曉佳</option><option value="tw">台灣國語・曉臻</option></select>
     <button id="muteBtn" title="背景音樂靜音"></button>
     <input id="vol" type="range" min="0" max="100" value="45" title="背景音樂音量">
   </div>
@@ -236,6 +239,8 @@
 <script src="lib/OrbitControls.js"></script>
 <script src="data.js"></script>
 <script src="facts.js"></script>
+<script src="voice-hk_20261015112113.js"></script>
+<script src="voice-tw-facts_20261015112750.js"></script>
 <script src="art.js"></script>
 <script>
 (() => {
@@ -904,6 +909,8 @@ function setStateBefore(i){
 }
 const voice = new Audio(); voice.preload = 'auto'; voice.setAttribute('playsinline', '');
 let voiceTok = 0;
+let narrator = 'hk';
+$('narratorSelect').onchange = () => { narrator = $('narratorSelect').value; if (idx >= 0) go(idx); };
 voice.addEventListener('ended', () => { voiceDone = true; Sound.duck(false); });
 voice.addEventListener('error', () => { if (idx >= 0) voiceDone = true; });
 function moveCamera(view){
@@ -928,7 +935,7 @@ function go(i){
   showArt(i);
   segFill.forEach((f, k) => f.style.width = k < i ? '100%' : '0%');
   const tok = ++voiceTok; audio = voice;
-  voice.pause(); voice.src = s.audio;
+  voice.pause(); voice.src = narrator === 'hk' ? VOICE_HK.steps[i].audio : s.audio;
   Sound.duck(true);
   const pr = voice.play(); if (pr) pr.catch(() => { if (tok === voiceTok) voiceDone = true; });
   $('prevBtn').disabled = i === 0;
@@ -938,9 +945,15 @@ function go(i){
 
 function updateSubs(){
   const el = $('subs');
-  if (!audio || idx < 0) { el.classList.remove('on'); return; }
-  const t = audio.currentTime, cue = STEPS[idx].cues.find(c => t >= c.s && t < c.e + 0.25);
-  if (cue && !audio.paused) { if (el.textContent !== cue.t) el.textContent = cue.t; el.classList.add('on'); }
+  if (idx < 0) { el.classList.remove('on'); return; }
+  const factPlaying = factAudio && !factAudio.paused;
+  const track = factPlaying ? factAudio : audio;
+  const cues = factPlaying
+    ? (narrator === 'hk' ? VOICE_HK.facts[idx].cues : VOICE_TW_FACTS[idx].cues)
+    : (narrator === 'hk' ? VOICE_HK.steps[idx].cues : STEPS[idx].cues);
+  if (!track) { el.classList.remove('on'); return; }
+  const t = track.currentTime, cue = cues.find(c => t >= c.s && t < c.e + 0.25);
+  if (cue && !track.paused) { if (el.textContent !== cue.t) el.textContent = cue.t; el.classList.add('on'); }
   else el.classList.remove('on');
 }
 
@@ -982,7 +995,7 @@ $('factClose').onclick = () => { factHidden = true; stopFact(); showFact(); };
 $('factChip').onclick = () => { factHidden = false; showFact(); };
 $('factPlay').onclick = () => {
   if (factAudio) { stopFact(); return; }
-  const a = factAudio = new Audio(FACTS[idx].audio);
+  const a = factAudio = new Audio(narrator === 'hk' ? VOICE_HK.facts[idx].audio : VOICE_TW_FACTS[idx].audio);
   a.addEventListener('ended', () => { if (a === factAudio) stopFact(); });
   Sound.duck(true); a.play().catch(stopFact);
   $('factPlay').classList.add('playing'); $('factPlay').textContent = '⏸ 停止聆聽';
