@@ -32,8 +32,8 @@
   /* volume */
   #audioCtl{position:absolute;right:calc(var(--u)*2.2);top:calc(var(--u)*3.1);display:flex;align-items:center;gap:calc(var(--u)*.8);
     background:var(--chip);backdrop-filter:blur(6px);padding:calc(var(--u)*.5) calc(var(--u)*.9);border-radius:calc(var(--u)*3);opacity:0;transition:opacity .6s}
-  #speedBtn{min-width:calc(var(--u)*3.6);border:1px solid var(--line);border-radius:calc(var(--u)*2);background:var(--chip);color:var(--ink);font:inherit;font-size:calc(var(--u)*1.05);font-variant-numeric:tabular-nums;padding:calc(var(--u)*.3) calc(var(--u)*.55);cursor:pointer}
-  #stage.port #speedBtn{font-size:calc(var(--u)*1.15)}
+  #speedSelect{border:1px solid var(--line);border-radius:calc(var(--u)*2);background:var(--chip);color:var(--ink);font:inherit;font-size:calc(var(--u)*1.05);font-variant-numeric:tabular-nums;padding:calc(var(--u)*.3) calc(var(--u)*.45);cursor:pointer}
+  #stage.port #speedSelect{font-size:calc(var(--u)*1.15)}
   #muteBtn{width:calc(var(--u)*2.2);height:calc(var(--u)*2.2);border:0;background:none;cursor:pointer;color:var(--ink);display:grid;place-items:center}
   #muteBtn svg{width:calc(var(--u)*1.7);height:calc(var(--u)*1.7)}
   #vol{width:calc(var(--u)*8);accent-color:var(--accent);cursor:pointer}
@@ -199,8 +199,8 @@
     <button class="navBtn" id="pagesBtn" title="跳到其他頁" aria-haspopup="true" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h11"/></svg>頁數</button>
     <a class="navBtn" id="homeBtn" href="../index.html" title="回主目錄"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>主目錄</a>
     <span class="sep"></span>
-    <select id="narratorSelect" aria-label="旁白聲線" title="旁白聲線"><option value="hk" selected>廣東話・曉曼</option><option value="tw">台灣國語・曉臻</option></select>
-    <button id="speedBtn" title="旁白速度（按一下切換）" aria-label="旁白速度">1×</button>
+    <select id="narratorSelect" aria-label="旁白聲線" title="旁白聲線"><option value="hk" selected>廣東話</option><option value="tw">台灣國語・曉臻</option></select>
+    <select id="speedSelect" aria-label="旁白速度" title="旁白速度"><option value="0.8">速度 0.8×</option><option value="0.9">速度 0.9×</option><option value="1" selected>速度 1×</option><option value="1.1">速度 1.1×</option><option value="1.25">速度 1.25×</option></select>
     <button id="muteBtn" title="背景音樂靜音"></button>
     <input id="vol" type="range" min="0" max="100" value="45" title="背景音樂音量">
   </div>
@@ -917,13 +917,12 @@ $('narratorSelect').onchange = () => { narrator = $('narratorSelect').value; if 
 const SPEEDS = [0.8, 0.9, 1, 1.1, 1.25];
 let speed = 1;
 try { const v = parseFloat(localStorage.getItem('faithVoiceSpeed')); if (SPEEDS.includes(v)) speed = v; } catch (e) {}
-$('speedBtn').textContent = speed + '×';
+$('speedSelect').value = String(speed);
 function applySpeed(){
-  $('speedBtn').textContent = speed + '×';
   [voice, factAudio].forEach(a => { if (a) a.defaultPlaybackRate = a.playbackRate = speed; });
 }
-$('speedBtn').onclick = () => {
-  speed = SPEEDS[(SPEEDS.indexOf(speed) + 1) % SPEEDS.length];
+$('speedSelect').onchange = () => {
+  speed = parseFloat($('speedSelect').value);
   try { localStorage.setItem('faithVoiceSpeed', speed); } catch (e) {}
   applySpeed();
 };
