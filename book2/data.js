@@ -3,7 +3,7 @@ window.STEPS = [
  {
   "lesson": "封面",
   "title": "信—第二部書",
-  "img": "images/doc-01.jpg",
+  "img": "images/pdf-01.jpg",
   "audio": "audio/step01.mp3",
   "cues": [
    {
@@ -46,7 +46,7 @@ window.STEPS = [
  {
   "lesson": "第六課",
   "title": "亞巴郎回應召叫",
-  "img": "images/doc-04.jpg",
+  "img": "images/pdf-04.jpg",
   "audio": "audio/step02.mp3",
   "cues": [
    {
@@ -84,7 +84,7 @@ window.STEPS = [
  {
   "lesson": "第六課",
   "title": "星空下的承諾",
-  "img": "images/doc-05.jpg",
+  "img": "images/pdf-05.jpg",
   "audio": "audio/step03.mp3",
   "cues": [
    {
@@ -122,7 +122,7 @@ window.STEPS = [
  {
   "lesson": "第六課",
   "title": "天主保護依撒格",
-  "img": "images/doc-05.jpg",
+  "img": "images/pdf-05.jpg",
   "audio": "audio/step04.mp3",
   "cues": [
    {
@@ -160,7 +160,7 @@ window.STEPS = [
  {
   "lesson": "第七課",
   "title": "梅瑟與燃燒的荊棘",
-  "img": "images/doc-06.jpg",
+  "img": "images/pdf-07.jpg",
   "audio": "audio/step05.mp3",
   "cues": [
    {
@@ -198,7 +198,7 @@ window.STEPS = [
  {
   "lesson": "第七課",
   "title": "穿越紅海",
-  "img": "images/doc-07.jpg",
+  "img": "images/pdf-08.jpg",
   "audio": "audio/step06.mp3",
   "cues": [
    {
@@ -231,7 +231,7 @@ window.STEPS = [
  {
   "lesson": "第八課",
   "title": "愛的誡命——十誡",
-  "img": "images/doc-08.jpg",
+  "img": "images/pdf-09.jpg",
   "audio": "audio/step07.mp3",
   "cues": [
    {
@@ -264,7 +264,7 @@ window.STEPS = [
  {
   "lesson": "第九課",
   "title": "敬愛天主與尊重聖名",
-  "img": "images/doc-11.jpg",
+  "img": "images/pdf-12.jpg",
   "audio": "audio/step08.mp3",
   "cues": [
    {
@@ -307,7 +307,7 @@ window.STEPS = [
  {
   "lesson": "第九課",
   "title": "主日一起敬拜",
-  "img": "images/doc-12.jpg",
+  "img": "images/pdf-13.jpg",
   "audio": "audio/step09.mp3",
   "cues": [
    {
@@ -345,7 +345,7 @@ window.STEPS = [
  {
   "lesson": "第十課",
   "title": "孝敬父母與照顧者",
-  "img": "images/doc-14.jpg",
+  "img": "images/pdf-15.jpg",
   "audio": "audio/step10.mp3",
   "cues": [
    {
@@ -388,7 +388,7 @@ window.STEPS = [
  {
   "lesson": "第十課",
   "title": "保護生命，說真話",
-  "img": "images/doc-17.jpg",
+  "img": "images/pdf-18.jpg",
   "audio": "audio/step11.mp3",
   "cues": [
    {
@@ -431,7 +431,7 @@ window.STEPS = [
  {
   "lesson": "第十一課",
   "title": "尊重身體與婚姻",
-  "img": "images/doc-18.jpg",
+  "img": "images/pdf-19.jpg",
   "audio": "audio/step12.mp3",
   "cues": [
    {
@@ -469,7 +469,7 @@ window.STEPS = [
  {
   "lesson": "第十一課",
   "title": "不偷盜，不貪心",
-  "img": "images/doc-19.jpg",
+  "img": "images/pdf-20.jpg",
   "audio": "audio/step13.mp3",
   "cues": [
    {
@@ -507,7 +507,7 @@ window.STEPS = [
  {
   "lesson": "活動",
   "title": "把愛帶進每一天",
-  "img": "images/doc-22.jpg",
+  "img": "images/pdf-22.jpg",
   "audio": "audio/step14.mp3",
   "cues": [
    {

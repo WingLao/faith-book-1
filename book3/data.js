@@ -3,7 +3,7 @@ window.STEPS = [
  {
   "lesson": "封面",
   "title": "信—第三部書",
-  "img": "images/doc-01.jpg",
+  "img": "images/pdf-01.jpg",
   "audio": "audio/step01.mp3",
   "cues": [
    {
@@ -36,7 +36,7 @@ window.STEPS = [
  {
   "lesson": "第十二課",
   "title": "小兒子離開家",
-  "img": "images/doc-03.jpg",
+  "img": "images/pdf-03.jpg",
   "audio": "audio/step02.mp3",
   "cues": [
    {
@@ -79,7 +79,7 @@ window.STEPS = [
  {
   "lesson": "第十二課",
   "title": "父親迎接他回來",
-  "img": "images/doc-04.jpg",
+  "img": "images/pdf-04.jpg",
   "audio": "audio/step03.mp3",
   "cues": [
    {
@@ -112,7 +112,7 @@ window.STEPS = [
  {
   "lesson": "第十二課",
   "title": "哥哥也被邀請",
-  "img": "images/doc-05.jpg",
+  "img": "images/pdf-05.jpg",
   "audio": "audio/step04.mp3",
   "cues": [
    {
@@ -145,7 +145,7 @@ window.STEPS = [
  {
   "lesson": "第十三課",
   "title": "認識罪與悔改",
-  "img": "images/doc-06.jpg",
+  "img": "images/pdf-06.jpg",
   "audio": "audio/step05.mp3",
   "cues": [
    {
@@ -188,7 +188,7 @@ window.STEPS = [
  {
   "lesson": "第十三課",
   "title": "找回迷失的羊",
-  "img": "images/doc-07.jpg",
+  "img": "images/pdf-07.jpg",
   "audio": "audio/step06.mp3",
   "cues": [
    {
@@ -221,7 +221,7 @@ window.STEPS = [
  {
   "lesson": "第十四課",
   "title": "復活的主帶來平安",
-  "img": "images/doc-09.jpg",
+  "img": "images/pdf-09.jpg",
   "audio": "audio/step07.mp3",
   "cues": [
    {
@@ -259,7 +259,7 @@ window.STEPS = [
  {
   "lesson": "第十四課",
   "title": "省察、痛悔與定志",
-  "img": "images/doc-10.jpg",
+  "img": "images/pdf-10.jpg",
   "audio": "audio/step08.mp3",
   "cues": [
    {
@@ -297,7 +297,7 @@ window.STEPS = [
  {
   "lesson": "第十四課",
   "title": "告罪、赦罪與補贖",
-  "img": "images/doc-10.jpg",
+  "img": "images/pdf-10.jpg",
   "audio": "audio/step09.mp3",
   "cues": [
    {
@@ -335,7 +335,7 @@ window.STEPS = [
  {
   "lesson": "第十五課",
   "title": "修和帶來的果實",
-  "img": "images/doc-13.jpg",
+  "img": "images/pdf-12.jpg",
   "audio": "audio/step10.mp3",
   "cues": [
    {
@@ -373,7 +373,7 @@ window.STEPS = [
  {
   "lesson": "第十五課",
   "title": "告解中的秘密",
-  "img": "images/doc-13.jpg",
+  "img": "images/pdf-13.jpg",
   "audio": "audio/step11.mp3",
   "cues": [
    {
@@ -416,7 +416,7 @@ window.STEPS = [
  {
   "lesson": "第十六課",
   "title": "伯多祿重新開始",
-  "img": "images/doc-16.jpg",
+  "img": "images/pdf-14.jpg",
   "audio": "audio/step12.mp3",
   "cues": [
    {
@@ -454,7 +454,7 @@ window.STEPS = [
  {
   "lesson": "第十七課",
   "title": "匝凱修補傷害",
-  "img": "images/doc-18.jpg",
+  "img": "images/pdf-16.jpg",
   "audio": "audio/step13.mp3",
   "cues": [
    {
@@ -492,7 +492,7 @@ window.STEPS = [
  {
   "lesson": "活動",
   "title": "每天練習新的善行",
-  "img": "images/doc-21.jpg",
+  "img": "images/pdf-19.jpg",
   "audio": "audio/step14.mp3",
   "cues": [
    {

@@ -3,7 +3,7 @@ window.STEPS = [
  {
   "lesson": "封面",
   "title": "信—第一部書",
-  "img": "images/doc-01.jpg",
+  "img": "images/pdf-01.jpg",
   "audio": "audio/step01.mp3",
   "cues": [
    {
@@ -41,7 +41,7 @@ window.STEPS = [
  {
   "lesson": "第一課",
   "title": "耶穌受洗",
-  "img": "images/doc-03.jpg",
+  "img": "images/pdf-03.jpg",
   "audio": "audio/step02.mp3",
   "cues": [
    {
@@ -84,7 +84,7 @@ window.STEPS = [
  {
   "lesson": "第一課",
   "title": "揀選十二宗徒",
-  "img": "images/doc-03.jpg",
+  "img": "images/pdf-03.jpg",
   "audio": "audio/step03.mp3",
   "cues": [
    {
@@ -117,7 +117,7 @@ window.STEPS = [
  {
   "lesson": "第二課",
   "title": "宣講天國的喜訊",
-  "img": "images/doc-04.jpg",
+  "img": "images/pdf-04.jpg",
   "audio": "audio/step04.mp3",
   "cues": [
    {
@@ -155,7 +155,7 @@ window.STEPS = [
  {
   "lesson": "第二課",
   "title": "孩子，起來！",
-  "img": "images/doc-05.jpg",
+  "img": "images/pdf-05.jpg",
   "audio": "audio/step05.mp3",
   "cues": [
    {
@@ -193,7 +193,7 @@ window.STEPS = [
  {
   "lesson": "第二課",
   "title": "我是善牧",
-  "img": "images/doc-06.jpg",
+  "img": "images/pdf-06.jpg",
   "audio": "audio/step06.mp3",
   "cues": [
    {
@@ -231,7 +231,7 @@ window.STEPS = [
  {
   "lesson": "第三課",
   "title": "最後晚餐",
-  "img": "images/doc-07.jpg",
+  "img": "images/pdf-07.jpg",
   "audio": "audio/step07.mp3",
   "cues": [
    {
@@ -269,7 +269,7 @@ window.STEPS = [
  {
   "lesson": "第三課",
   "title": "耶穌聖體",
-  "img": "images/doc-08.jpg",
+  "img": "images/pdf-08.jpg",
   "audio": "audio/step08.mp3",
   "cues": [
    {
@@ -312,7 +312,7 @@ window.STEPS = [
  {
   "lesson": "第四課",
   "title": "山園祈禱與苦路",
-  "img": "images/doc-10.jpg",
+  "img": "images/pdf-10.jpg",
   "audio": "audio/step09.mp3",
   "cues": [
    {
@@ -360,7 +360,7 @@ window.STEPS = [
  {
   "lesson": "第四課",
   "title": "痛苦聖母",
-  "img": "images/doc-12.jpg",
+  "img": "images/pdf-12.jpg",
   "audio": "audio/step10.mp3",
   "cues": [
    {
@@ -403,7 +403,7 @@ window.STEPS = [
  {
   "lesson": "第五課",
   "title": "關閉的天堂之門",
-  "img": "images/doc-13.jpg",
+  "img": "images/pdf-13.jpg",
   "audio": "audio/step11.mp3",
   "cues": [
    {
@@ -441,7 +441,7 @@ window.STEPS = [
  {
   "lesson": "第五課",
   "title": "十字架敞開天堂",
-  "img": "images/doc-14.jpg",
+  "img": "images/pdf-14.jpg",
   "audio": "audio/step12.mp3",
   "cues": [
    {
@@ -484,7 +484,7 @@ window.STEPS = [
  {
   "lesson": "活動",
   "title": "背起十字架跟隨祂",
-  "img": "images/doc-15.jpg",
+  "img": "images/pdf-15.jpg",
   "audio": "audio/step13.mp3",
   "cues": [
    {
