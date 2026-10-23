@@ -242,7 +242,7 @@
 <script src="lib/OrbitControls.js"></script>
 <script src="data.js"></script>
 <script src="facts.js"></script>
-<script src="voice-hk_20261015150752.js"></script>
+<script src="voice-hk_20261023085013.js"></script>
 <script src="voice-tw-facts_20261015112750.js"></script>
 <script src="art.js"></script>
 <script>
@@ -620,7 +620,7 @@ function buildPage(kind,i){
  show(icon(g,'你也被愛',0,2.7,-.6,3),3);show(add(g,at(makeHeart(0xcd909a,.5),0,1.7,.2)),4);break;}
  case 'choices':{
  who(0,.3,0x9aafbe,{},0);
- for(const [x,txt]of [[-1.5,'嚴重事情'],[0,'清楚知道'],[1.5,'完全自願']])show(icon(g,txt,x,2,-.8,1.45,.55),2);
+ for(const [x,txt]of [[-1.5,'明知'],[0,'故犯'],[1.5,'大事情']])show(icon(g,txt,x,2,-.8,1.45,.55),2);
  show(add(g,at(makeHeart(0xc9959f,.5),0,1.35,.4)),4);break;}
  case 'sheep':{
  show(treeAt(g,-1.8,-.7,.8),0);const j=jesus(-.7,.05,1);const s=add(g,at(sheep(),1,.05,.8));s.scale.setScalar(.75);s.children[0].scale.z=1.8;show(s,0);
@@ -631,7 +631,7 @@ function buildPage(kind,i){
  show(icon(g,'領受聖神',0,1.9,.2,2.1,.4),3);show(icon(g,'願你們平安',0,3.2,-1.2,3.2),2);show(icon(g,'門徒代表・並非全體人數',0,.08,1.5,2.9,.28),0);break;}
  case 'examine':{
  who(0,.4,0x97aabd,{},0);show(cross(g,0,1.7,-.8,.7),0);
- for(const[x,txt,n]of[[-1.6,'省察',0],[0,'痛悔',2],[1.6,'定志',3]])show(icon(g,txt,x,2.6,-.5,1.4,.5),n);
+ for(const[x,txt,n]of[[-1.6,'省察',0],[0,'痛悔',2],[1.6,'決心',3]])show(icon(g,txt,x,2.6,-.5,1.4,.5),n);
  show(add(g,at(makeHeart(0xc88c96,.5),0,1.15,.65)),4);break;}
  case 'confession':{
  const priest=who(-.85,.1,0x323f48,{},1);const vest=grp(at(box(.11,.52,.035,0x885ca1),-.17,.42,.15),at(box(.11,.52,.035,0x885ca1),.17,.42,.15),at(box(.15,.04,.035,0xfffaf0),0,.65,.13));show(add(g,at(vest,-.85,.06,.1)),1);who(.85,.1,0x98b0bd,{},0);
